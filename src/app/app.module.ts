@@ -1,18 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CategoryComponent } from './category/category.component';
+import { NavComponent } from './nav/nav.component';
+import { ProductComponent } from './product/product.component';
+import { ProductFilterPipe } from './product/product-filter.pipe';
+import { ProductService } from './services/product.service';
+import { CategoryService } from './services/category.service';
+import { ProductAddFormsComponent } from './product/product-add-forms/product-add-forms.component';
+import { LoginComponent } from './login/login.component';
+import { AccountService } from './services/account.service';
+import { LoginGuard } from './login/login.guard';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategoryComponent,
+    NavComponent,
+    ProductComponent,
+    ProductFilterPipe,
+    ProductAddFormsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ProductService, CategoryService, LoginGuard],
+  bootstrap: [AppComponent, AccountService]
 })
 export class AppModule { }

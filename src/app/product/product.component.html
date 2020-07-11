@@ -1,0 +1,27 @@
+<div class="form-group">
+  <input class="form-control" id="productName" placeholder="Ürün Ara" [(ngModel)]="filterText" />
+  <small *ngIf="filterText" class="form-text text-muted">
+    Şu an <strong>{{filterText}}</strong> aradınız
+  </small>
+</div>
+<h3 *ngIf="products; else: noProduct">{{title}}</h3>
+<ng-template #noProduct>
+  <div class="alert alert-primary" role="alert">
+    Burada ürün yok!!
+  </div>
+</ng-template>
+
+
+<div *ngFor="let urun of products | productFilter:filterText" class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5">{{urun.name | uppercase}} {{urun.price | currency:'USD'}}</h2>
+      <p class="lead">{{urun.description}}</p>
+      <a (click)="addToChart(urun)" class="btn btn-primary">Sepete Ekle</a>
+    </div>
+    <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <img [src]="urun.imageUrl" class="card-img-top" alt="..." height="400" width="400">
+    </div>
+    
+  </div>
+</div>

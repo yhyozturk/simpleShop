@@ -1,0 +1,7 @@
+<h3>{{title}}</h3>
+<a class="py-2 d-none d-md-inline-block" routerLink="product-add">Ürün Ekle</a>
+<div class="container d-flex flex-column flex-md-row justify-content-between" *ngFor="let kategori of categories">
+    <a class="py-2 d-none d-md-inline-block" routerLink="products/category/{{kategori.id}}">
+        {{kategori.name}}
+    </a>
+</div>
